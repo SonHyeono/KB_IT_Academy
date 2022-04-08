@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>계산기</title>
+        <script>
+            function clk( n ){
+                num = document.querySelector("#num")
+                if(n == "="){
+                    s = num.value
+                    num.value = eval(num.value)
+                    s += " = " + num.value
+                    document.querySelector("#msg").innerHTML += "<li>" + s + "</li>"
+                    
+                }else if(n == "CE"){
+                    num.value = "" //내용 삭제
+                }else{
+                    num.value += n  //키 누적
+                }
+            }
+        </script>
+        <style>
+            #num { text-align: right; }
+            button { width: 33px; height: 30px;  }
+        </style>
+    </head>
+    <body>
+        <div>
+            <input id="num" placeholder="0.0">
+            <div>
+                <button onclick="clk('7')">7</button>
+                <button onclick="clk('8')">8</button>
+                <button onclick="clk('9')">9</button>
+                <button onclick="clk('+')">+</button>
+                <br>
+                <button onclick="clk('4')">4</button>
+                <button onclick="clk('5')">5</button>
+                <button onclick="clk('6')">6</button>
+                <button onclick="clk('-')">-</button>
+                <br>
+                <button onclick="clk('1')">1</button>
+                <button onclick="clk('2')">2</button>
+                <button onclick="clk('3')">3</button>
+                <button onclick="clk('*')">*</button>
+                <br>
+                <button onclick="clk('0')">0</button>
+                <button onclick="clk('CE')">CE</button>
+                <button onclick="clk('=')">=</button>
+                <button onclick="clk('/')">/</button>
+                <br>
+            </div>
+            <h2>결 과 이 력</h2>
+            <ol id="msg"></ol>
+        </div> 
+
+    </body>
+</html>
