@@ -1,0 +1,82 @@
+
+
+<!-- width highlight로 value 값을 의미하게 , 텍스트 박스에서 숫자가 오른쪽에 가도록 해야하고. -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>계산기</title>
+         <script>
+             
+               ca = ""
+            function check_num(num) {
+                ca += num
+                var Myelement = document.forms['cal_inputform']['cal_input'];
+                Myelement.setAttribute('value',ca);
+            }
+             function check_oper(check){
+                 var op = ""
+                 if(check == 1){
+                     op = document.querySelector("#cal_plu").value
+                 }else if(check == 2){
+                     op = document.querySelector("#cal_sub").value
+                 }else if(check == 3){
+                     op = document.querySelector("#cal_mul").value
+                 }else if(check == 4){
+                     op = document.querySelector("#cal_div").value
+                 }else if(check == 5){
+                     ca = ""
+                 }
+                 ca += op
+                 var Myelement = document.forms['cal_inputform']['cal_input'];
+                Myelement.setAttribute('value',ca);
+             }
+             index = 0
+             function con(){
+                 
+                 index += 1
+                 msg = document.querySelector("#msg")
+                 msg.innerHTML += index + ". " + ca + " = " + eval(ca) +"<br>"
+                 ca = ""
+                 var Myelement = document.forms['cal_inputform']['cal_input'];
+                 Myelement.setAttribute('value',ca);
+                 
+             }
+        </script>
+    </head>
+    <body>
+        <h1>계산기 v0.1</h1>
+        <form name="cal_inputform">
+            
+        <input type="text" id="in_id" name="cal_input" value="" placeholder="0.0" style = "text-align:right;" >
+        </form>
+        <br>
+        <div>
+            <button onclick="check_num(7)" id ="ca7" >7</button>
+            <button onclick="check_num(8)" id="cal8" >8</button>
+            <button onclick="check_num(9)" id="cal9">9</button>
+            <button onclick="check_oper(1)" id="cal_plu" value="+">+</button>
+            <br>
+            <button onclick="check_num(4)" id="cal4">4</button>
+            <button onclick="check_num(5)" id="cal5">5</button>
+            <button onclick="check_num(6)" id="cal6">6</button>
+            <button onclick="check_oper(2)" id="cal_sub" value="-">-</button>
+            <br>
+            <button onclick="check_num(1)" id="cal1">1</button>
+            <button onclick="check_num(2)" id="cal2">2</button>
+            <button onclick="check_num(3)" id="cal3">3</button>
+            <button onclick="check_oper(3)" id="cal_mul" value="*">*</button>
+            <br>
+            <button onclick="check_num(0)" id="cal0">0</button>
+            <button onclick="check_oper(5)" id="calCE">CE</button>
+            <button onclick="con()" id="cal=">=</button>
+            <button onclick="check_oper(4)" id="cal_div" value="/">/</button>
+        </div>
+        
+        <h2>결과 이력</h2>
+        <div id="msg"></div>
+        
+       
+    </body>
+</html>
